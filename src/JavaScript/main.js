@@ -8,7 +8,7 @@ const showAddModal = () => {
 const hideFormAndModal = () => {
   modal.style.display = "none";
   formAdd.style.display = "none";
-  document.querySelector('.detail__form').style.display = 'none';
+  document.querySelector(".detail__form").style.display = "none";
 };
 
 const fileInput = document.querySelector("#img_link");
@@ -87,6 +87,7 @@ function getVocabulary(callback) {
   fetch(vocabApi)
     .then(function (response) {
       return response.json();
+
     })
     .then(callback);
 }
@@ -105,33 +106,34 @@ function renderVocab(vocabs) {
       </div>
     `;
   });
-  document.querySelector(".body__content").innerHTML += vocabItem.join(''); // 
+  document.querySelector(".body__content").innerHTML += vocabItem.join(""); //
 }
 function getVocabById(id) {
-  return axios.get(`http://localhost:3000/vocabularys/${id}`)
-    .then(response => response.data)
-    .catch(error => {
-      console.error('Error fetching vocab:', error);
+  return axios
+    .get(`http://localhost:3000/vocabularys/${id}`)
+    .then((response) => response.data)
+    .catch((error) => {
+      console.error("Error fetching vocab:", error);
     });
 }
 
 
-
-
+var ID;
 
 const showDetail = (vocabId) => {
-
-  console.log(vocabId)
-  getVocabById(vocabId).then(vocab => {
+  ID = vocabId
+  console.log(ID);
+  getVocabById(ID).then((vocab) => {
     // console.log(vocab);
-    document.querySelector('#detail__form__contain').innerHTML =
-  `<div class="detail__form">
+    document.querySelector(
+      "#detail__form__contain"
+    ).innerHTML = `<div class="detail__form">
         <div class="detail__form__content">
           <div class="detail__form__content__top">
             <div class="detail__form__content__top--icon" onclick="hideDetailForm()">
               <i class="fa-solid fa-x"></i>
             </div>
-             <div class="detail__form__content__top__delete--icon" onclick="deleteItem(${vocabId})">
+             <div class="detail__form__content__top__delete--icon" onclick="deleteItem()">
               <i class="fa-solid fa-trash"></i>
             </div>
 
@@ -154,19 +156,17 @@ const showDetail = (vocabId) => {
             </div>
           </div>
         </div>
-      </div>
-    `
-
-  modal.style.display = "block";
-  document.querySelector('.detail__form').style.display = 'flex';
-
+      </div>`;
+    modal.style.display = "block";
+    document.querySelector(".detail__form").style.display = "flex";
   });
 };
 
-const deleteItem = (vocabId) => {
-  console.log(vocabId.id);
-  axios.delete(`http://localhost:3000/vocabularys/${vocabId.id}`)
-    .then(response => {
+const deleteItem = () => {
+  console.log(ID);
+  axios
+    .delete(`http://localhost:3000/vocabularys/${ID}`)
+    .then((response) => {
       console.log(response);
       if (response.status === 200) {
         // Xóa phần tử khỏi DOM
@@ -174,17 +174,14 @@ const deleteItem = (vocabId) => {
         alert("Delete item complete");
       }
     })
-    .catch(error => {
-      console.error('Error deleting item:', error);
+    .catch((error) => {
+      console.error("Error deleting item:", error);
       alert("An error occurred while deleting the item.");
     });
 };
 
-
-
-const hideDetailForm = () =>{
-  document.querySelector('.detail__form').style.display = 'none';
+const hideDetailForm = () => {
+  document.querySelector(".detail__form").style.display = "none";
   modal.style.display = "none";
-}
-
+};
 
