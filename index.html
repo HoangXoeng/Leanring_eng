@@ -10,9 +10,108 @@
       rel="stylesheet"
       href="./assets/fonts/fontawesome-free-6.6.0-web/fontawesome-free-6.6.0-web/css/all.min.css"
     />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
   </head>
-  <body></body>
+  <body>
+    <div class="container">
+      <!-- Header begin -->
+      <div class="header">
+        <div class="header-session col-12">
+          <div class="header__menu">
+            <ul class="header__menu-list">
+              <li class="header__menu__item roboto-regular" id="menu--home">
+                Home
+              </li>
+              <li class="header__menu__item roboto-regular" id="menu--about">
+                About
+              </li>
+              <li class="header__menu__item roboto-regular" id="menu--contact">
+                Contact
+              </li>
+              <li class="header__menu__item roboto-regular" id="menu--gallery">
+                Gallery
+              </li>
+              <li class="header__menu__item roboto-regular" id="menu--team">
+                Team
+              </li>
+            </ul>
+          </div>
+
+          <div class="header__search">
+            <input
+              type="text"
+              id="header__search"
+              class="roboto-light"
+              placeholder="Find vocabulary"
+            />
+            <span class="header__search__icon"
+              ><i class="fa-solid fa-magnifying-glass"></i
+            ></span>
+          </div>
+        </div>
+      </div>
+      <!-- Header end -->
+
+      <!-- Body begin -->
+      <div class="body">
+        <div class="body__content col-12">
+          <div class="body__content__add col-4" onclick="showAddModal()">
+            <div class="body__content__add--top">
+              <div class="body__content__add__icon">
+                <i class="fa-solid fa-plus body__content__add__icon__plus"></i>
+              </div>
+            </div>
+            <div class="body__content__add--bot">
+              <span class="body__content__add__title roboto-bold"
+                >Create new one</span
+              >
+            </div>
+          </div>
+
+
+
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="add__form">
+      <form action="" name="frm" id="formAdd">
+        <i
+          class="fa-solid fa-x"
+          id="close__form"
+          onclick="hideFormAndModal()"
+        ></i>
+
+        <label for="word">Word</label>
+        <input type="text" id="word" name="word" required /> <br /><br />
+
+        <label for="meaning">Meaning</label>
+        <input type="text" id="meaning" name="meaning" required /> <br /><br />
+
+        <label for="example">Example</label>
+        <textarea id="example" name="example" required></textarea>
+        <br /><br />
+
+        <input
+          type="file"
+          id="img_link"
+          name="img_link"
+          accept="image/*"
+          required
+        />
+        <br /><br />
+
+        <button type="button" onclick="addNewVocab()">Create</button>
+      </form>
+    </div>
+
+    <div class="modal" onclick="hideFormAndModal()"></div>
+  </body>
+  <script src="./assets/JavaScript/main.js"></script>
 </html>
